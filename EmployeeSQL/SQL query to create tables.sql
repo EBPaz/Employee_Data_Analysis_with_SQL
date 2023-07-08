@@ -1,10 +1,5 @@
--- DROP TABLE departments
--- DROP TABLE dept_manager
--- DROP TABLE dept_employee
--- DROP TABLE employee
--- DROP TABLE salaries
--- DROP TABLE titles
-
+-- create the correct tables to import data into with the correct
+-- primary keys and foreign keys
 
 -- create the departments table
 CREATE TABLE departments (
@@ -15,46 +10,11 @@ CREATE TABLE departments (
 SELECT * FROM departments
 
 
--- create the department manager table
-CREATE TABLE dept_manager (
-     dept_no VARCHAR NOT NULL,
-     emp_no INT NOT NULL,
-     PRIMARY KEY (dept_no, emp_no),
-     FOREIGN KEY (dept_no) REFERENCES departments (dept_no)
-);
-SELECT * FROM dept_manager
- 
- 
--- create the department employee table
- CREATE TABLE dept_employee (
-    emp_no INT NOT NULL,
-    dept_no VARCHAR NOT NULL, 
-    PRIMARY KEY (emp_no, dept_no),
-    FOREIGN KEY (dept_no) REFERENCES departments (dept_no)
-);
-SELECT * FROM dept_employee
-
-
--- create the employee table
-CREATE TABLE employee (
-    emp_no INT NOT NULL,
-    title_id VARCHAR NOT NULL,
-    birth_date DATE NOT NULL,
-    first_name VARCHAR NOT NULL,
-    last_name VARCHAR NOT NULL,
-    sex VARCHAR NOT NULL,
-    hire_date DATE NOT NULL,
-    PRIMARY KEY (emp_no)
-);
-SELECT * FROM employee
-
-
 -- create the salaries table
 CREATE TABLE salaries (
     emp_no INT NOT NULL,
     salary INT NOT NULL,
-    PRIMARY KEY (emp_no),
-    FOREIGN KEY (emp_no) REFERENCES employee (emp_no)
+    PRIMARY KEY (emp_no)
 );
 SELECT * FROM salaries
 
@@ -68,13 +28,39 @@ CREATE TABLE titles (
 SELECT * FROM titles
 
 
--- add the foreign keys that couldn't be created until all tables were made
-ALTER TABLE dept_manager
-ADD FOREIGN KEY (emp_no) REFERENCES employee (emp_no);
+-- create the employee table
+CREATE TABLE employee (
+    emp_no INT NOT NULL,
+    title_id VARCHAR NOT NULL,
+    birth_date DATE NOT NULL,
+    first_name VARCHAR NOT NULL,
+    last_name VARCHAR NOT NULL,
+    sex VARCHAR NOT NULL,
+    hire_date DATE NOT NULL,
+    PRIMARY KEY (emp_no),
+	FOREIGN KEY (emp_no) REFERENCES salaries (emp_no),
+    FOREIGN KEY (title_id) REFERENCES titles (title_id)
+);
+SELECT * FROM employee
 
-ALTER TABLE dept_employee
-ADD FOREIGN KEY (emp_no) REFERENCES employee (emp_no);
 
-ALTER TABLE employee
-ADD FOREIGN KEY (emp_no) REFERENCES salaries (emp_no),
-ADD FOREIGN KEY (title_id) REFERENCES titles (title_id);
+-- create the department manager table
+CREATE TABLE dept_manager (
+     dept_no VARCHAR NOT NULL,
+     emp_no INT NOT NULL,
+     PRIMARY KEY (dept_no, emp_no),
+     FOREIGN KEY (dept_no) REFERENCES departments (dept_no),
+	 FOREIGN KEY (emp_no) REFERENCES employee (emp_no)
+);
+SELECT * FROM dept_manager
+ 
+ 
+-- create the department employee table
+ CREATE TABLE dept_employee (
+    emp_no INT NOT NULL,
+    dept_no VARCHAR NOT NULL, 
+    PRIMARY KEY (emp_no, dept_no),
+    FOREIGN KEY (dept_no) REFERENCES departments (dept_no),
+	FOREIGN KEY (emp_no) REFERENCES employee (emp_no)
+);
+SELECT * FROM dept_employee
