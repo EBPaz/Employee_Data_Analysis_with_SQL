@@ -1,4 +1,4 @@
--- Data Analysis
+-- Data Analysis for Pewlett Hackard, employees 1980 - 1999
 -- 1. List the employee number, last name, first name, sex, and salary of each employee.employee_salary
 SELECT employee.emp_no, 
 	employee.last_name, 
@@ -46,8 +46,7 @@ WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
 -- 6. List each employee in the Sales department, including their employee number, last name, and first name.
 SELECT dept_employee.emp_no, 
 	employee.last_name,
-	employee.first_name,
-	departments.dept_name
+	employee.first_name
 FROM dept_employee
 JOIN employee ON
 employee.emp_no = dept_employee.emp_no
@@ -55,3 +54,21 @@ JOIN departments ON
 departments.dept_no = dept_employee.dept_no
 WHERE departments.dept_name = 'Sales'; 
 
+-- 7. List each employee in the Sales and Development departments, including their employee number, last name, first name, and department name.
+SELECT dept_employee.emp_no, 
+	employee.last_name,
+	employee.first_name,
+	departments.dept_name
+FROM dept_employee
+JOIN employee ON
+employee.emp_no = dept_employee.emp_no
+JOIN departments ON
+departments.dept_no = dept_employee.dept_no
+WHERE departments.dept_name = 'Sales' OR departments.dept_name = 'Development';
+
+-- 8.List the frequency counts, in descending order, of all the employee last names (that is, how many employees share each last name).
+SELECT employee.last_name,
+	COUNT(employee.last_name) AS name_count
+FROM employee
+GROUP BY employee.last_name
+ORDER BY "name_count" DESC;
