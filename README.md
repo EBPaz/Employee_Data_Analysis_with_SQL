@@ -8,6 +8,7 @@ This project is an example of using SQL to gain insight from older data stored w
 EmployeeSQL folder
   - SQL query to create the tables to hold data
   - SQL query to analyze the data and answer questions about the data
+    
 Data folder (CSV files that hold the original data)
   - departments
   - dept_ employee
@@ -15,6 +16,7 @@ Data folder (CSV files that hold the original data)
   - employees
   - salaries
   - titles
+    
 ERD Employee SQL.png is a visual of the data in the form of an Entity Relationship Diagram
 
 ## Getting Started / Installation
