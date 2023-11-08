@@ -26,7 +26,8 @@ For this probject, you need to install Postgres and utilize pgAdmin
 ## Analysis / Results
 The SQL code written to create the six CSV's can be found in the "SQL query to create tables" file in the EmployeeSQL file.  
 The data was analyzed for specific questions. The SQL code written for this can be visualized in the "SQL query for data analysis" file in the EmployeeSQL file. 
-Here is an example of the first question:
+ 
+Here is an example of the syntax in the first question:
 ![Screenshot 2023-11-08 115220](https://github.com/EBPaz/sql-challenge/assets/131284675/b31f25f5-1c99-4808-94c1-94f26bc66f9a)
 
 ## Acknowledgments
