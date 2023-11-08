@@ -24,7 +24,8 @@ ERD Employee SQL.png is a visual of the data in the form of an Entity Relationsh
 For this probject, you need to install Postgres and utilize pgAdmin
 
 ## Analysis / Results
-Specific questions relating to the historical employee data were answered, including:  
+The SQL code written to create the six CSV's can be found in the "SQL query to create tables" file in the EmployeeSQL file.  
+The data was analyzed for specific questions. The SQL code written for this can be visualized in the "SQL query for data analysis" file in the EmployeeSQL file.
 
 
 ## Acknowledgments
